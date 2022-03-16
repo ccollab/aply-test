@@ -1,0 +1,29 @@
+
+
+<h1 style="text-align: center;"><strong>Prueba Capacidades Tecnicas Ingeniero Cloud</strong></h1>
+<p><strong></strong></p>
+<h3><strong>Punto A.</strong></h3>
+<p>Se realizo el despliegue de un servidor Linux Centos en Azure. En su despliegue se realizo la creacion de una red independiente en la cual se habilitaron<br />los puerto de entrada 22, 80 y 8088.</p>
+<p></p>
+<p>******************* Instalar apache *******************************<br />1) sudo su<br />2) yum update httpd -- Actualizacion de paquetes<br />3) yum -y install httpd -- Instalacion Apache<br />4) systemctl start httpd -- subir el servicio de apache<br />5) systemctl status httpd -- Validar el servicio<br />6) Ingreso a la ruta /etc/httpd/conf y en el archivo httpd.conf le cambio el puerto a 8088 en la linea "listen"<br />7) systemctl start httpd -- subir nuevamente el servicio de apache<br />8) systemctl status httpd -- Validar el servicio nuevamnete<br />9) se valido con el comando firewall-cmd --state si el firewall esta deshabilitado y/o habilitado.</p>
+<p></p>
+<p>******************** Problemas*********************************<br />Al momento de cambiar el puerto de 80 a 8088 me generaba un error "make_sock: could not bind to address [::]:8088" luego de investigar<br />encontre que el SELinux solo permit&iacute;a que apache/httpd a puertos especificos, la solucion fue ingresar a editar el archivo config en la ruta <br />/etc/selinux y en la lina donde indica SELINUX dejarlo con "Disable".</p>
+<p><strong></strong></p>
+<h3><strong>Punto B.</strong></h3>
+<ul style="list-style-type: circle;">
+<li>&iquest;Que Sistema Operativo tiene la maquina?: CentOS Linux 7 (Core) - Se saca la informacion con el comando hostnamectl, "cat /etc/*release"</li>
+<li>Espacio en disco: 30 GB - Se saca con el comando&nbsp; df -h</li>
+<li>Cantidad de Memoria RAM: 8 Gb - Se puede sacar con el comando top, free -h</li>
+<li>Version Kernel Linux: Linux 3.10.0-957.27.2.el7.x86_64 - Se saca con el comando "uname -sr"&nbsp;&nbsp;</li>
+<li>Caracteristicas CPU: - Se saca con el comando grep 'vendor_id' /proc/cpuinfo ; grep 'model name' /proc/cpuinfo ; grep 'cpu MHz' /proc/cpuinfo
+<ul style="list-style-type: circle;">
+<li>vendor_id&nbsp; &nbsp; &nbsp; &nbsp;: GenuineIntel</li>
+<li>vendor_id&nbsp; &nbsp; &nbsp; &nbsp;: GenuineIntel</li>
+<li>model name&nbsp; &nbsp; &nbsp; : Intel(R) Xeon(R) Platinum 8171M CPU @ 2.60GHz</li>
+<li>model name&nbsp; &nbsp; &nbsp; : Intel(R) Xeon(R) Platinum 8171M CPU @ 2.60GHz</li>
+<li>cpu MHz&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;: 2095.229</li>
+<li>cpu MHz&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;: 2095.229</li>
+<li>Ip Privada: 10.0.0.6 /24 - Se saca con el comando "ifconfig" o "ip add"</li>
+</ul>
+</li>
+</ul>
